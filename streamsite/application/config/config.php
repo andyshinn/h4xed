@@ -11,7 +11,7 @@
 |	http://example.com/
 |
 */
-$config['base_url']	= "http://radio.h4xed.us/";
+$config['base_url']	= "http://radio-dev.h4xed.us/";
 
 /*
 |--------------------------------------------------------------------------
