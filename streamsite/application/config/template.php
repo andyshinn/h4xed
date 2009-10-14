@@ -59,12 +59,24 @@ $template['active_template'] = 'default';
  
 $ci = & get_instance();
 
+$view_data = array();
+
+if ($ci->config->item('development'))
+{
+	$view_data['dev_msg'] = "Your are viewing the H4XED Radio development site";
+}
+else
+{
+	print "False";
+	$view_data['dev_msg'] = "";
+}
+
 $template['default']['template'] = 'template';
 $template['default']['regions'] = array (
 'title'=> array('content'=> array('H4XED Radio - Melodic Death Metal Streaming Radio'), 'name'=>'Page Title'),
 'main',
 'right',
-'header' => array('content' => array($ci->load->view('include/header', null, true)), 'name' => 'HTML Header'),
+'header' => array('content' => array($ci->load->view('include/header', $view_data, true)), 'name' => 'HTML Header'),
 'hlinks',
 'currently_playing',
 'footer'

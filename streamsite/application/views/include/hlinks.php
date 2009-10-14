@@ -1,4 +1,5 @@
 <div id="hlinks">
+	
     <ul>
         <li>
             <a href="<?php echo site_url('radio/news')?>"><span class="orange">home</span></a>
@@ -14,3 +15,5 @@
         </li>
     </ul>
 </div>
+
+<div id="dev_msg"><?php echo $dev_msg ?></div>
