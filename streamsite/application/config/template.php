@@ -67,7 +67,6 @@ if ($ci->config->item('development'))
 }
 else
 {
-	print "False";
 	$view_data['dev_msg'] = "";
 }
 
