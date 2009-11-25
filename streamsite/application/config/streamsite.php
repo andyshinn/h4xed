@@ -1,3 +1,3 @@
 <?php
-    $config['development'] = true;
+    $config['development'] = false;
 ?>

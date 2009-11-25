@@ -16,13 +16,15 @@ class Shout extends Controller
     
         $this->template->add_js('assets/js/prototype.js');
         
-        $data['shout_list'] = $this->shoutbox->get_shoutbox_list();
+        $data['shout_list'] = $this->shoutbox->get_list();
         $data['shoutbox'] = $this->load->view('public/shoutbox/_shout_box', $data, TRUE);
         
-        $this->template->write_view('hlinks', 'include/hlinks');
-        $this->template->write_view('right', 'include/right');
-        $this->template->parse_view('main', 'public/shoutbox/test', $data);
-        $this->template->render();
+//        $this->template->write_view('hlinks', 'include/hlinks');
+//        $this->template->write_view('right', 'include/right');
+//        $this->template->parse_view('main', 'public/shoutbox/test', $data);
+//        $this->template->render();
+
+		$this->load->view('public/shoutbox/test', $data);
     }
     
     function add($data = null)

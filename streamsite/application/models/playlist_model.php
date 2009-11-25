@@ -15,6 +15,7 @@ class Playlist_model extends Model
         $this->db->from('requestlist');
         $this->db->join('songlist', 'requestlist.songID = songlist.ID', 'left');
         $this->db->order_by('requestlist.ID', 'desc');
+	$this->db->limit(50);
 
         return $this->db->get();
     }

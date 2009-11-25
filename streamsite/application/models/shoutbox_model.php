@@ -1,15 +1,15 @@
-<?php 
+<?php
+
 class Shoutbox_model extends Model
 {
     function Shoutbox_model()
     {
-        // Call the Model constructor
         parent::Model();
     }
     
-    function get_shoutbox_list()
+    function get_list()
     {
-        $this->db->limit(25, 0);
+        $this->db->limit(10);
         $this->db->order_by("date", "desc");
         $this->db->from('shouts');
         $result = $this->db->get();
@@ -31,7 +31,8 @@ class Shoutbox_model extends Model
         $this->db->set('date', "NOW()", FALSE);
         $this->db->insert('shouts');
 		
-        return TRUE;
+        return TRUE; // needed?
     }
 }
+
 ?>

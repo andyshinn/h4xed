@@ -17,11 +17,19 @@
 </div>
 <h3>Song<span class="orange">History</span></h3>
 <div class="box">
+
     <ul>
         {song_history}
-        <li>
-            {song}
-        </li>
+        <li>{song}</li>
         {/song_history}
+    </ul>
+</div>
+
+<h3>Friends<span class="orange">Links</span></h3>
+<div class="box">
+		Music:
+    <ul>
+        <li><a target="_blank" href="http://leechmaster.com.ar">Leechmaster</a></li>
+		<li><a target="_blank" href="http://www.warpath-online.com/">Warpath</a></li>
     </ul>
 </div>

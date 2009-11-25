@@ -136,8 +136,6 @@ h5 {
 	background-color: #F7F7F7;
 }
 
-/* Main - Content Box ------------------------------------------------------------------------- */
-
 #main {
 	float: left;
 	width: 67%;
@@ -211,4 +209,44 @@ a.read:hover {
 	font-size: 10px;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	font-weight: bold;
+}
+
+#shoutbox #messages, #form {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: x-small;
+}
+#shoutbox #button {
+	float: right;
+	margin-top: 20px;
+}
+#shoutbox #form #fields textarea {
+	border: 1px solid #CCC;
+	width: 145px;
+	clear: right;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: x-small;
+}
+
+#shoutbox #form #fields input {
+	border: 1px solid #CCC;
+	width: 145px;
+	clear: right;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: x-small;
+}
+
+#shoutbox #messages dl dt {
+	font-weight: bold;
+	color: #F30
+}
+#shoutbox #messages dl dd {
+	margin-bottom: 5px;
+	margin-left: 10px;
+	border-bottom-width: 1px;
+	border-bottom-color: #CCC;
+	border-bottom-style: solid;
+}
+#shoutbox {
+	width: 200px;
+	padding-left: 20px;
 }

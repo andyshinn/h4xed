@@ -15,10 +15,12 @@ class Radio extends Controller
         $this->load->model('stream_model', 'stream');
         $this->load->model('playlist_model', 'playlist');
         $this->load->model('news_model', 'news');
+		$this->load->model('shoutbox_model', 'shoutbox');
         $this->load->dbutil();
         $this->load->helper('url');
         $this->load->helper('date');
         $this->load->helper('text');
+		$this->load->helper('debug');
         $this->load->library( array ('parser', 'template'));
     }
 
@@ -78,6 +80,22 @@ class Radio extends Controller
 		
 		$artist_query = $this->playlist->artist($song_current->artist);
 		$artist = $artist_query->row();
+		
+		$shouts = $this->shoutbox->get_list();
+		
+		$shouts_new = array();
+		foreach ($shouts as $shout)
+		{
+			print $shout['date'];
+			$shouts_new[]['date_new'] = mdate("%m/%d/%y", mysql_to_unix($shout['date']));
+		}
+		
+		$shouts_cur = array_merge_recursive($shouts, $shouts_new);
+		
+		print_array($shouts_new);
+		print_array($shouts_cur);
+		
+		$shouts['date_new'] = mdate("%m/%d/%y", $shouts['date']);
 
         $this->view_data['song_current'] = $song_current->artist." - ".$song_current->title;
         $this->view_data['song_current_limited'] = character_limiter(ucwords($this->view_data['song_current']), $this->char_limit_current);
@@ -85,6 +103,7 @@ class Radio extends Controller
 		$this->view_data['album_count'] = $artist->albumcount;
         $this->view_data['song_title'] = $song_current->title;
         $this->view_data['song_artist'] = $artist->artist;
+		$this->view_data['shouts'] = $this->shoutbox->get_list();
 
         foreach ($song_current as $key=>$value)
         {
