@@ -15,7 +15,6 @@ class Playlist_model extends Model
         $this->db->from('requestlist');
         $this->db->join('songlist', 'requestlist.songID = songlist.ID', 'left');
         $this->db->order_by('requestlist.ID', 'desc');
-	$this->db->limit(50);
 
         return $this->db->get();
     }
@@ -101,6 +100,16 @@ class Playlist_model extends Model
 
         return $this->db->get();
     }
+	
+	function duration()
+	{
+		$this->db->select('SUM(duration/1000) AS total');
+		$this->db->from('songlist');
+		
+		$query = $this->db->get();
+		
+		return $query->row();
+	}
 
     function albums($artist)
     {
