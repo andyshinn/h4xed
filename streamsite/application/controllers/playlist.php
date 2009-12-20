@@ -18,7 +18,7 @@ class Playlist extends Controller
         $this->load->model('playlist_model', 'playlist');
         $this->load->model('stream_model', 'stream');
         $this->load->helper(array(
-            'url', 'form', 'string'
+            'url', 'form', 'string', 'date'
         ));
     }
     
@@ -88,31 +88,50 @@ class Playlist extends Controller
         }
     }
     
-    function requests($key = null)
-    {
+    function requests($days = 7)
+    {        
+		$current_date_unix = time();
+
         $tmpl = array(
-            'table_open'=>'<table class="requests">',
-            'heading_row_start'=>'<tr>', 'heading_row_end'=>'</tr>', 'heading_cell_start'=>'<th>', 'heading_cell_end'=>'</th>',
-            'row_start'=>'<tr>', 'row_end'=>'</tr>', 'cell_start'=>'<td>', 'cell_end'=>'</td>',
-            'row_alt_start'=>'<tr class="alt">', 'row_alt_end'=>'</tr>', 'cell_alt_start'=>'<td>', 'cell_alt_end'=>'</td>',
-            'table_close'=>'</table>'
+            'table_open'=>'<table class="requests">', 'heading_row_start'=>'<tr>', 'heading_row_end'=>'</tr>', 'heading_cell_start'=>'<th>', 'heading_cell_end'=>'</th>', 'row_start'=>'<tr>', 'row_end'=>'</tr>', 'cell_start'=>'<td>', 'cell_end'=>'</td>', 'row_alt_start'=>'<tr class="alt">', 'row_alt_end'=>'</tr>', 'cell_alt_start'=>'<td>', 'cell_alt_end'=>'</td>', 'table_close'=>'</table>'
         );
+		
+		$this->table->set_template($tmpl);
         
-        $this->table->set_template($tmpl);
-        if ($key == 'hi')
+		$this->template->set_master_template('template_lightbox');
+        
+        for ($day = 0; $day < $days; $day++)
         {
-            $query_requests = $this->playlist->requests();
-            $requests = $query_requests->result_array();
+        	$date_unix = strtotime(date('Y-m-d', $current_date_unix) . " -" . $day ." days");
+			$date_human = date('D, M d, Y', $date_unix);
+			$date_mysql = date('Y-m-d', $date_unix);
+            $query_requests = $this->playlist->requests($date_mysql);
             $fields = $query_requests->list_fields();
-            $fields2 = $this->db->list_fields('requestlist');
-            $this->table->set_heading(array(
-                'Request ID', 'Song ID', 'Client IP', 'Code', 'Status', 'Artist', 'Title', 'Album', 'Date'
-            ));
-            $this->view_data['table_requests'] = $this->table->generate($requests);
+            $requests = $query_requests->result_array();
+
+            
+            $this->table->set_caption("Requests for $date_human");
+			
+            if ($query_requests->num_rows() > 0)
+            {
+                $this->table->set_heading($fields);
+                $table = $this->table->generate($requests);
+            }
+            else
+            {
+                $this->table->add_row('No requests today :-(');
+                $table = $this->table->generate();
+            }
+			
+			$this->view_data['table_requests'] = $table;
+			$this->template->write_view('main', 'public/requests', $this->view_data);
+			
+			$this->table->clear();
         }
 
+        $this->template->render();
+
         
-        $this->load->view('public/requests', $this->view_data);
     }
     
     function request($song_id = NULL)

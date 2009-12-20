@@ -9,13 +9,18 @@ class Playlist_model extends Model
         parent::Model();
     }
 
-    function requests()
+    function requests($date = NULL, $limit = 50)
     {
+    	if ($date)
+		{
+			$this->db->where("t_stamp BETWEEN DATE_SUB(DATE_ADD(\"$date\", INTERVAL 1 DAY), INTERVAL 1 DAY) AND DATE_ADD(\"$date\", INTERVAL 1 DAY)");
+		}
+		
         $this->db->select('requestlist.ID, requestlist.songID, host, code, requestlist.status, artist, title, album, t_stamp');
         $this->db->from('requestlist');
         $this->db->join('songlist', 'requestlist.songID = songlist.ID', 'left');
         $this->db->order_by('requestlist.ID', 'desc');
-
+		
         return $this->db->get();
     }
 

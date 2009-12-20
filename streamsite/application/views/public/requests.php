@@ -23,10 +23,10 @@
 
 .requests caption
 {
-  caption-side: bottom;
-  font-size: 0.9em;
-  font-style: italic;
-  text-align: right;
+  caption-side: top;
+  font-size: 1.2em;
+  font-style: normal;
+  text-align: left;
   padding: 0.5em 0;
 }
 
@@ -78,7 +78,6 @@
 
 <body>
 <div id="requests">
-<h1>H4XED Metal Playlist Requests</h1>
 <?php echo $table_requests; ?>
 </div>
 </body>
