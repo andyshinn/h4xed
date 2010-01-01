@@ -77,8 +77,14 @@ class Radio extends Controller
     
     function news()
     {
+    	
         $this->template->set_master_template('template_right');
         
+        $this->template->add_js ( 'assets/js/jquery-1.3.2.min.js' );
+	$this->template->add_js ( 'assets/js/shoutbox.js' );
+
+	$this->template->add_css ( 'assets/css/style-right.css' );
+		
         $query_song_current = $this->playlist->current_song();
         $song_current = $query_song_current->row();
         
@@ -102,6 +108,8 @@ class Radio extends Controller
         
         $this->template->parse_view('main', 'public/currently_playing', $this->view_data);
         
+        
+        
         $this->view_data['graph_hourly_url'] = 'http://radio.h4xed.us/radio/listeners/hourly.png';
         
         $this->view_data['song_date_played'] = mdate('%M %j%S, %Y at %g:%i %A', human_to_unix($song_current->date_played));
@@ -120,6 +128,7 @@ class Radio extends Controller
         
         $this->view_data['song_history'] = $this->history_data;
         $this->template->parse_view('right', 'public/right', $this->view_data);
+        $this->template->write_view('right', 'public/shoutbox/_shoutbox_list');
         
         $query_news = $this->news->listing($this->limit_news);
         $news_item = $query_news->result_array();

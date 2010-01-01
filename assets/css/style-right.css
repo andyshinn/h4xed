@@ -211,7 +211,7 @@ a.read:hover {
 	font-weight: bold;
 }
 
-#shoutbox #messages, #form {
+#shoutbox #messages {
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: x-small;
 }
@@ -219,7 +219,7 @@ a.read:hover {
 	float: right;
 	margin-top: 20px;
 }
-#shoutbox #form #fields textarea {
+#shoutbox #fields textarea {
 	border: 1px solid #CCC;
 	width: 145px;
 	clear: right;
@@ -227,7 +227,7 @@ a.read:hover {
 	font-size: x-small;
 }
 
-#shoutbox #form #fields input {
+#shoutbox #fields input {
 	border: 1px solid #CCC;
 	width: 145px;
 	clear: right;
