@@ -23,7 +23,7 @@
 | NO TRAILING SLASH!
 |
 */
-	$system_folder = "streamsite";
+	$system_folder = "system";
 
 /*
 |---------------------------------------------------------------
@@ -40,7 +40,7 @@
 | NO TRAILING SLASH!
 |
 */
-	$application_folder = "application";
+	$application_folder = "../application";
 
 /*
 |===============================================================
