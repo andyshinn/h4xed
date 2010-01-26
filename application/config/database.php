@@ -38,17 +38,17 @@ $active_group = "default";
 $active_record = TRUE;
 
 $db['default']['hostname'] = "localhost";
-$db['default']['username'] = "h4xedus_sam";
-$db['default']['password'] = "3g3r235N";
-$db['default']['database'] = "h4xedus_sam";
+$db['default']['username'] = "h4xed_radio";
+$db['default']['password'] = "xyK9zDzERMDuCNYU";
+$db['default']['database'] = "h4xed_radio";
 $db['default']['dbdriver'] = "mysql";
 $db['default']['dbprefix'] = "";
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
 $db['default']['cachedir'] = "";
-$db['default']['char_set'] = "latin1";
-$db['default']['dbcollat'] = "latin1_swedish_ci";
+$db['default']['char_set'] = "utf8";
+$db['default']['dbcollat'] = "utf8_general_ci";
 
 
 /* End of file database.php */
