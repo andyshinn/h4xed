@@ -7,21 +7,14 @@ class Shoutbox_model extends Model
         parent::Model();
     }
     
-    function get_list()
+    function messages($limit = 10)
     {
-        $this->db->limit(10);
-        $this->db->order_by("date", "desc");
+        $this->db->select('id, name, email, time, message');
+        $this->db->limit($limit);
+        $this->db->order_by('date', 'desc');
         $this->db->from('shouts');
-        $result = $this->db->get();
         
-        if ($result->num_rows() > 0)
-        {
-            return $result->result_array();
-        }
-        else
-        {
-            return FALSE;
-        }
+        return $this->db->get();
     }
     
     function add_shout()

@@ -1,6 +1,0 @@
-SELECT `s1`.`ID`, `s1`.`duration`, `s1`.`artist`, `s1`.`title`, `s1`.`album`, `s1`.`trackno`, `s1`.`genre`, `s1`.`count_played`, `s1`.`count_requested`, `s1`.`count_performances`, COUNT(s1.artist) as artistsongs, s2.weight AS s2weight, s1.weight AS s1weight
-FROM (`songlist` AS s1)
-LEFT JOIN `songlist` AS s2
-ON `s1`.`artist` = `s2`.`artist`
-WHERE  `s1`.`ID` = '829'
-GROUP BY `s1`.`artist`
