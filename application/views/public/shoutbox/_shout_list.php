@@ -3,7 +3,7 @@
   {
     foreach($shout_list as $shout):
   ?>      
-      <dt style='width:6em'><?=$shout['name']?>:</dt>
+      <dt style='width:6em'>TEST<?=$shout['name']?>:</dt>
       <dd style='margin:-1.4em 0 0.54em 6em'><?=$shout['message']?></dd>
 <?php
     endforeach;

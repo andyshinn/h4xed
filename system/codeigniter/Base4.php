@@ -38,6 +38,19 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/
  */
+
+$config = new CI_Config();
+$db = new CI_DB_active_record();
+$email = new CI_Email();
+$form_validation = new CI_Form_validation();
+$input = new CI_Input();
+$load = new CI_Loader();
+$router = new CI_Router();
+$session = new CI_Session();
+$table = new CI_Table();
+$unit = new CI_Unit_test();
+$uri = new CI_URI();
+
  class CI_Base extends CI_Loader {
 
 	function CI_Base()

@@ -21,7 +21,7 @@
 	<img src="/assets/images/shoutbox/blueloading.gif" alt="Loading data, please wait...">  
 	</div><br />
 	
-	<input type="submit" value="ok" /><br />
+	<input type="submit" value="ok" />POOP<br />
 	</form>
 	</div>
 </body>

@@ -30,6 +30,7 @@
  * @link		http://codeigniter.com/user_guide/
  */
 
+
 class CI_Base {
 
 	private static $instance;
