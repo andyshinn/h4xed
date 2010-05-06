@@ -2,7 +2,7 @@ $(document).ready(function() {
     timestamp = 0;
     updateMsg();
     hideLoading();
-    $("form#chatform").submit(function() {
+    $("form#shoutbox").submit(function() {
 	showLoading();
 	$.post("/shoutbox2/backend", {
 	    message : $("#content").val(),

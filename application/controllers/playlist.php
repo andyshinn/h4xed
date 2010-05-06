@@ -140,13 +140,24 @@ class Playlist extends Controller
         
         if ($song_id)
         {
-            $song_query = $this->playlist->get($song_id);
-            
+
+		$song_query = $this->playlist->get($song_id);
+
             foreach ($song_query->row_array() as $key=>$value)
             {
                 $this->view_data[$key] = $value;
             }
-            
+
+
+		if($song_id == 3981 || $song_id == 3982 || $song_id == 3983)
+		{
+			$this->view_data['req_message'] = 'None';
+		        $this->view_data['req_id'] = 'None';
+			$this->view_data['req_status'] = '<span class="red">Request Failed</span> - Requests for this song have been disabled';
+		}
+		else
+		{
+
             $sam_request = $this->sam->request($song_id);
             $sam_request_array = $this->xml->parse($sam_request);
             
@@ -161,6 +172,7 @@ class Playlist extends Controller
             {
                 $this->view_data['req_status'] = '<span class="red">Request Failed</span> - See message for failed reason';
             }
+	}
             
             $this->template->parse_view('main', 'public/song_request', $this->view_data);
         }
