@@ -169,18 +169,11 @@ class Radio extends Controller {
 		return $return;
 	}
 	
-	function tunein($stream_port = null) {
+	function tunein($stream_id = null, $list_type = null) {
 
-		if ($stream_port) {
-			switch ($stream_port) {
-				case 7080 :
-					header ( 'Location: http://sc-01.h4xed.us:7080/listen.pls' );
-					break;
-				case 7082 :
-					header ( 'Location: http://sc-01.h4xed.us:7082/listen.pls' );
-					break;
-					exit ();
-			}
+		if ($stream_id && $list_type) {
+			header ( 'Location: ' . base_url() . 'assets/links/' . $stream_id . '.' . $list_type );
+			exit ();
 		}
 		else {
 			$this->template->write_view ( 'main', 'public/tunein' );

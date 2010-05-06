@@ -212,16 +212,17 @@ a.read:hover {
 }
 
 #shoutbox #messages {
+	margin-top: 30px;
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: x-small;
 }
 #shoutbox #button {
 	float: right;
-	margin-top: 20px;
+	margin-top: 5px;
 }
 #shoutbox #fields textarea {
 	border: 1px solid #CCC;
-	width: 145px;
+	width: 100%;
 	clear: right;
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: x-small;
@@ -229,7 +230,7 @@ a.read:hover {
 
 #shoutbox #fields input {
 	border: 1px solid #CCC;
-	width: 145px;
+	width: 100px;
 	clear: right;
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: x-small;

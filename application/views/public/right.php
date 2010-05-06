@@ -7,11 +7,11 @@
 <h3>Tune<span class="orange">In</span></h3>
 <div class="box">
     <ul>
-        <li>
-            <a href="http://sc-01.h4xed.us:7080/listen.pls">MP3 160k PLS</a> / M3U / ASX
+        <li>MP3 160k
+<?php echo anchor('radio/tunein/7080/pls', 'PLS') ?> / <?php echo anchor('radio/tunein/7080/m3u', 'M3U') ?> / <?php echo anchor('radio/tunein/7080/asx', 'ASX') ?>
         </li>
-        <li>
-            <a href="http://sc-01.h4xed.us:7082/listen.pls">aacPlus 96k PLS</a> / M3U / ASX
+        <li>AAC+ 96k
+<?php echo anchor('radio/tunein/7082/pls', 'PLS') ?> / <?php echo anchor('radio/tunein/7082/m3u', 'M3U') ?> / <?php echo anchor('radio/tunein/7082/asx', 'ASX') ?>
         </li>
     </ul>
 </div>
