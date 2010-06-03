@@ -41,8 +41,8 @@ class Shoutbox2 extends Controller {
 			$current = time ();
 			$this->db->query ( "INSERT INTO shouts SET name='$name', message='$message', time='$current' " );
 			//			$this->db->query("INSERT INTO shouts SET name='$name', message='$message'");
-			$delid = mysql_insert_id () - $store_num;
-			$this->db->query ( "DELETE FROM shouts WHERE id <= $delid" );
+		//	$delid = mysql_insert_id () - $store_num;
+		//	$this->db->query ( "DELETE FROM shouts WHERE id <= $delid" );
 		}
 		
 		if (empty ( $time )) {

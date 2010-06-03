@@ -1,7 +1,7 @@
 <h3>About<span class="orange">Us</span></h3>
 <div id="about">
     <p>
-        H4XED Metal is a H4XED Radio streaming internet radio station dedicated to bringing you new, lesser played melodic death metal, technical metal, metalcore, hardcore, and more!
+        H4XED Metal is a H4XED Radio streaming internet radio station dedicated to bringing you new, lesser played melodic death, technical death, thrash, doom, and other metal!
     </p>
 </div>
 <h3>Tune<span class="orange">In</span></h3>
