@@ -46,7 +46,7 @@ class Shoutbox2 extends Controller {
 		}
 		
 		if (empty ( $time )) {
-			$sql = "SELECT * FROM shouts ORDER BY id ASC LIMIT $display_num";
+			$sql = "SELECT * FROM shouts ORDER BY id DESC LIMIT $display_num";
 		} else {
 			$sql = "SELECT * FROM shouts WHERE time > $time ORDER BY id ASC LIMIT $display_num";
 		}
@@ -65,10 +65,13 @@ class Shoutbox2 extends Controller {
 		echo "\t<time>" . time () . "</time>\n";
 		
 		if ($query->num_rows () > 0) {
-			foreach ( $query->result () as $row ) {
-				$escmsg = htmlspecialchars ( stripslashes ( $row->message ) );
+
+		$shouts_reverse = array_reverse($query->result_array());
+
+			foreach ( $shouts_reverse as $shout ) {
+				$escmsg = htmlspecialchars ( stripslashes ( $shout['message'] ) );
 				echo "\t<message>\n";
-				echo "\t\t<author>$row->name</author>\n";
+				echo "\t\t<author>".$shout['name']."</author>\n";
 				echo "\t\t<text>$escmsg</text>\n";
 				echo "\t</message>\n";
 			}
