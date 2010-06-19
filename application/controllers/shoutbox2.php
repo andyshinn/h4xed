@@ -6,6 +6,7 @@ class Shoutbox2 extends Controller {
 		parent::Controller ();
 		$this->load->library('template');
 		$this->load->helper('cookie');
+		$this->load->helper('when');
 	}
 	
 	function index() {
@@ -46,9 +47,9 @@ class Shoutbox2 extends Controller {
 		}
 		
 		if (empty ( $time )) {
-			$sql = "SELECT * FROM shouts ORDER BY id DESC LIMIT $display_num";
+			$sql = "SELECT `id`, `name`, `email`, `message`, `website`, `date`, `time`, UNIX_TIMESTAMP(date) AS date2 FROM shouts ORDER BY id DESC LIMIT $display_num";
 		} else {
-			$sql = "SELECT * FROM shouts WHERE time > $time ORDER BY id ASC LIMIT $display_num";
+			$sql = "SELECT `id`, `name`, `email`, `message`, `website`, `date`, `time`, UNIX_TIMESTAMP(date) AS date2 FROM shouts WHERE time > $time ORDER BY id ASC LIMIT $display_num";
 		}
 		
 		$query = $this->db->query ( "$sql" );
@@ -71,6 +72,7 @@ class Shoutbox2 extends Controller {
 			foreach ( $shouts_reverse as $shout ) {
 				$escmsg = htmlspecialchars ( stripslashes ( $shout['message'] ) );
 				echo "\t<message>\n";
+				echo "\t\t<timestamp>" . when($shout['date2']) . "</timestamp>\n";
 				echo "\t\t<author>".$shout['name']."</author>\n";
 				echo "\t\t<text>$escmsg</text>\n";
 				echo "\t</message>\n";

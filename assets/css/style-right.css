@@ -212,7 +212,7 @@ a.read:hover {
 }
 
 #shoutbox #messages {
-	margin-top: 30px;
+	margin-top: 50px;
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: x-small;
 }
@@ -236,18 +236,26 @@ a.read:hover {
 	font-size: x-small;
 }
 
-#shoutbox #messages dl dt {
+#shoutbox #messages dt {
 	font-weight: bold;
-	color: #F30
+	color: #F30;
+	padding-bottom: 5px;
 }
-#shoutbox #messages dl dd {
-	margin-bottom: 5px;
-	margin-left: 10px;
+#shoutbox #messages dd {
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	margin-left: 0px;
+	padding-left: 10px;
 	border-bottom-width: 1px;
 	border-bottom-color: #CCC;
 	border-bottom-style: solid;
 }
+
+#shoutbox #messages #timestamp {
+	color: #000;
+}
+
 #shoutbox {
 	width: 200px;
-	padding-left: 20px;
+	padding-left: 10px;
 }

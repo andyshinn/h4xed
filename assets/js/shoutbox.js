@@ -55,7 +55,7 @@ function addMessages(xml) {
 	    function(id) {
 		message = $("message", xml).get(id);
 		$("#messages").prepend(
-			"<dt>" + $("author", message).text() + "</dt>" + "<dd>"
+			"<dt>" + $("author", message).text() + " <span id=\"timestamp\"> : </span>" + $("timestamp", message).text() + "</strong></dt>" + "<dd>"
 				+ $("text", message).text() + "</dd>");
 	    });
 
