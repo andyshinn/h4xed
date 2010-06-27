@@ -50,12 +50,14 @@ function hideLoading() {
 function addMessages(xml) {
     if ($("status", xml).text() == "2")
 	return;
+    $("#messages").prepend("<dl>");
+    $("#messages").append("</dl>");
     timestamp = $("time", xml).text();
     $("message", xml).each(
 	    function(id) {
 		message = $("message", xml).get(id);
 		$("#messages").prepend(
-			"<dt>" + $("author", message).text() + " <span id=\"timestamp\"> : </span>" + $("timestamp", message).text() + "</strong></dt>" + "<dd>"
+			"<dt>" + $("author", message).text() + "<span id=\"timestamp\"> : </span>" + $("timestamp", message).text() + "</strong></dt>" + "<dd>"
 				+ $("text", message).text() + "</dd>");
 	    });
 
