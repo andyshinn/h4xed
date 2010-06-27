@@ -1,126 +1,7 @@
-/* Syncostyle by Gearóid Moroney (Tetz) © 2006 */
-
-
-body {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	background-color: #3E3D47;
-	margin: 1em;
-}
-a {
-	color: #000;
-	text-decoration: none;
-}
-a:hover, #hlinks a:hover {
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-	border-bottom-color: #F30;
-}
-#all {
-	width: 720px;
-	background-color: #FFF;
-	float: left;
-}
-#head {
-	float: left;
-	background: #FFF url(../images/header-04-f.png) no-repeat left;
-	width: 100%;
-	height: 80px;
-	border-bottom: 1px solid #BEC0C9;
-}
-#hlinks {
-	font-family: Verdana, Geneva, sans-serif;
-	font-size: 14px;
-	font-weight: bold;
-	margin-top: 50px;
-	width: 380px;
-	float: right;
-}
-#hlinks li {
-	display: inline;
-}
-#hlinks ul {
-	list-style-type: none;
-	white-space: nowrap;
-	display: inline;
-	height: 10px;
-	margin: 0;
-}
-#hlinks a {
-	margin-left: 1em;
-	border: none;
-}
-span.grn {
-	color: #090;
-}
-span.orange {
-	color: #ff3300;
-}
-/* Right - Boxes on the Right - Navigation etc. ----------------------------------------------- */
-
 #right {
 	width: 32%;
 	float: right;
 	margin-right: 3px;
-}
-h3 {
-	color: #373737;
-	font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-	font-size: 20px;
-	text-align: right;
-	word-spacing: 0em;
-	margin-top: 5px;
-	margin-right: 5px;
-	margin-bottom: 0px;
-	margin-left: 0px;
-	text-transform: lowercase;
-}
-h1 {
-	color: #373737;
-	font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-	font-size: 24px;
-	margin: 2px;
-	text-transform: lowercase;
-}
-
-h2{
-	font-family: Verdana, Geneva, sans-serif;
-	font-size: 12px;
-	margin-top: 10px;
-	margin-right: 0px;
-	margin-bottom: 5px;
-	margin-left: 0px;
-	color: #373737;
-}
-
-h5 {
-	margin: 0;
-	font-size: 12px;
-	font-weight: bold;
-}
-
-#main h4 {
-	font-family: Verdana, Geneva, sans-serif;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-	margin-left: 0px;
-	padding-top: 0px;
-	padding-right: 0px;
-	padding-bottom: 10px;
-	padding-left: 5px;
-}
-#main h3 {
-	font-family: Verdana, Geneva, sans-serif;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-	margin-left: 0px;
-	padding-top: 0px;
-	padding-right: 0px;
-	padding-bottom: 10px;
-	padding-left: 5px;
-	border-bottom: 1px solid #BEC0C9;
 }
 
 #about, .rbox {
@@ -129,51 +10,17 @@ h5 {
 	margin-bottom: 1em;
 	margin-left: 1em;
 }
+
 #about {
 	text-align: left;
 }
+
 .rbox:hover {
 	background-color: #F7F7F7;
 }
 
-#main {
-	float: left;
-	width: 67%;
-	margin-left: 3px;
-}
-#main p {
-	margin: 1em 2px;
-}
 
-.cont {
-	color: #373737;
-	text-align: justify;
-	margin-bottom: 1em;
-}
-a.read {
-	color: #000;
-	font-size: 20px;
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: normal;
-	display: inline;
-	margin: 0;
-	border-bottom: 1px solid #090;
-}
-a.read:hover {
-	background-color: #EBEBEB;
-}
 
-#foot {
-	color: #FFF;
-	width: 720px;
-	font-weight: bold;
-	text-align: right;
-	position: relative;
-	clear: left;
-}
-#foot a {
-	color: #FFF;
-}
 #right .box {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 10px;
@@ -184,31 +31,6 @@ a.read:hover {
 	font-size: 10px;
 	margin-bottom: 1em;
 	text-align: right;
-}
-#all ul {
-	list-style-type: disc;
-	list-style-position: inside;
-	padding-left: 5px;
-	margin-left: 0em;
-	margin-bottom: 0em;
-
-}
-
-#all #right li {
-	padding-left: 0em;
-	padding-right: 0em;
-	margin-bottom: 0em;
-	margin-left: 0px;
-	margin-right: 0px;
-
-}
-
-
-.timestamp {
-	color: #ff3300;
-	font-size: 10px;
-	font-family:Verdana, Arial, Helvetica, sans-serif;
-	font-weight: bold;
 }
 
 #shoutbox #messages {
