@@ -4,9 +4,10 @@ class Shoutbox2 extends Controller {
 	
 	function Shoutbox2() {
 		parent::Controller ();
-		$this->load->library('template');
+		$this->load->library(array('template', 'typography'));
 		$this->load->helper('cookie');
 		$this->load->helper('when');
+		$this->load->model('shoutbox_model', 'shoutbox');
 	}
 	
 	function index() {
@@ -37,8 +38,8 @@ class Shoutbox2 extends Controller {
 		
 		if (@$action == "postmsg") {
 			
-//			$this->_setname($name);
-			setcookie('hr_name', $name, time()+86500, '/', false);
+			$this->_setname($name);
+//			setcookie('hr_name', $name, time()+86500, '/', false);
 			$current = time ();
 			$this->db->query ( "INSERT INTO shouts SET name='$name', message='$message', time='$current' " );
 			//			$this->db->query("INSERT INTO shouts SET name='$name', message='$message'");
@@ -71,10 +72,11 @@ class Shoutbox2 extends Controller {
 
 			foreach ( $shouts_reverse as $shout ) {
 				$escmsg = htmlspecialchars ( stripslashes ( $shout['message'] ) );
+				$message = $this->typography->auto_typography($shout['message']);
 				echo "\t<message>\n";
 				echo "\t\t<timestamp>" . when($shout['date2']) . "</timestamp>\n";
 				echo "\t\t<author>".$shout['name']."</author>\n";
-				echo "\t\t<text>$escmsg</text>\n";
+				echo "\t\t<text>$message</text>\n";
 				echo "\t</message>\n";
 			}
 		}
