@@ -17,7 +17,7 @@ jQuery(function() {
 
 <p>Title: <input type="text" name="title" value="<?php echo set_value('title', $title)?>" size="50" /></p>
 
-<p>Body: <textarea class="wymeditor" name="body" id="body" cols="65" rows="10"><?php echo set_value('body', $body)?></textarea></p>
+<p>Body: <textarea class="wymeditor" name="body" id="body" cols="65" rows="40"><?php echo set_value('body', $body)?></textarea></p>
 
 <p>Poster: <input type="text" name="poster" value="<?php echo set_value('poster', $poster)?>" size="50" /></p>
 

@@ -19,7 +19,7 @@ jQuery(function() {
 
 <p>Title: <input type="text" name="title" value="" size="50" /></p>
 
-<p>Body: <textarea class="wymeditor" name="body" id="body" cols="80" rows="10"></textarea></p>
+<p>Body: <textarea class="wymeditor" name="body" id="body" cols="80" rows="40"></textarea></p>
 
 <p>Poster: <input type="text" name="poster" value="" size="50" /></p>
 
