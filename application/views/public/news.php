@@ -1,6 +1,6 @@
 <h1>Current<span class="orange">News</span></h1>
 {news_item}<div id="news">
-<h2>{news_title}</h2>
+<h3>{news_title}</h3>
 <div class="timestamp">
 <p>Posted: {date}</p>
 </div>
