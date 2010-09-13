@@ -15,15 +15,9 @@
 
     </head>
     <body>
-        <div id="all">
-            <div id="head">
-                <?php echo $hlinks ?>
-            </div>
-            <div id="right">
-                <?php echo $right ?>
-            </div>
-            <div id="main">
-                <?php echo $main ?>
-            </div>
-        </div>
+
+<div id="head"><?php echo $hlinks ?></div>
+<div id="main"><?php echo $main ?></div>
+<div id="right"><?php echo $right ?></div>
+
 <?php $this->load->view('include/footer') ?>

@@ -1,7 +1,7 @@
 #right {
-	width: 32%;
-	float: right;
-	margin-right: 3px;
+	width: 40%;
+	float: left;
+	display: inline-block;
 }
 
 #about, .rbox {
@@ -78,6 +78,5 @@
 }
 
 #shoutbox {
-	width: 200px;
 	padding-left: 10px;
 }

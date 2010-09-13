@@ -1,5 +1,6 @@
 <div id="hlinks">
-	
+<?php echo anchor('', "<img class=\"logo\" src=\"" . base_url() . "assets/images/header-04-f.png\" />") ?>
+
     <ul>
         <li>
             <a href="<?php echo site_url('radio/news')?>"><span class="orange">home</span></a>
