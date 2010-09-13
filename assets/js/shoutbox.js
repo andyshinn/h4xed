@@ -4,7 +4,7 @@ $(document).ready(function() {
     hideLoading();
     $("form#shoutbox").submit(function() {
 	showLoading();
-	$.post("/shoutbox2/backend", {
+	$.post("/shoutbox/backend", {
 	    message : $("#content").val(),
 	    name : $("#name").val(),
 	    action : "postmsg",
@@ -64,7 +64,7 @@ function addMessages(xml) {
 }
 
 function updateMsg() {
-    $.post("/shoutbox2/backend", {
+    $.post("/shoutbox/backend", {
 	time : timestamp
     }, function(xml) {
 	$("#loading").remove();

@@ -1,7 +1,7 @@
 <h3>Shout<span class="orange">Box</span></h3>
 <div class="box">
 
-<form id="shoutbox" action="<?php echo site_url("shoutbox2/backend") ?>">
+<form id="shoutbox" action="<?php echo site_url("shoutbox/backend") ?>">
     <div id="form">
 	<div id="fields">
             <input id="name" name="name" type="text" value="{name}" maxlength="35" />
