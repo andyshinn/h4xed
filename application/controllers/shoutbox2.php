@@ -4,9 +4,10 @@ class Shoutbox2 extends Controller {
 	
 	function Shoutbox2() {
 		parent::Controller ();
+		$this->load->helper(array('url', 'date', 'text', 'debug', 'cookie', 'when'));
+		$this->load->library('parser');
 		$this->load->library('template');
-		$this->load->helper('cookie');
-		$this->load->helper('when');
+		$this->load->model('shoutbox_model', 'shoutbox');
 	}
 	
 	function index() {
@@ -22,11 +23,25 @@ class Shoutbox2 extends Controller {
 		$this->template->parse_view ( 'main', 'public/shoutbox/_shoutbox_list' );
 		$this->template->render ();
 	}
+
+    function history() {
+
+                $shoutbox = $this->shoutbox->messages(0);
+		$shoutbox_messages = $shoutbox->result();
+
+		$view_data = array();
+		
+		$view_data['shoutbox'] = $shoutbox_messages;	
+
+                $this->template->write_view('main', 'public/shoutbox/shoutbox_history', $view_data);
+                $this->template->write_view('hlinks', 'include/hlinks');
+                $this->template->render();
+    }
 	
 	function backend() {
 		
 		$store_num = 10;
-		$display_num = 10;
+		$display_num = 20;
 		
 		header ( "Content-type: text/xml" );
 		header ( "Cache-Control: no-cache" );

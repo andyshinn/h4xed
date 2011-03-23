@@ -10,6 +10,15 @@ class Shoutbox extends Controller
 		$this->load->library('parser');
         $this->load->helper('form');
     }
+
+    function contact() {
+
+		$shoutbox_messages = $this->shoutbox->messages(0);
+
+                $this->template->write_view('main', 'public/shoutbox_history');
+                $this->template->write_view('hlinks', $this->hlinks);
+                $this->template->render();
+    }
     
     function index()
     {
