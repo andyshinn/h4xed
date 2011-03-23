@@ -25,8 +25,9 @@ class Shoutbox2 extends Controller {
 	}
 
     function history() {
-
-                $shoutbox = $this->shoutbox->messages(0);
+		$this->template->add_css('assets/css/shoutbox.css');
+		
+        $shoutbox = $this->shoutbox->messages(0);
 		$shoutbox_messages = $shoutbox->result();
 
 		$view_data = array();
