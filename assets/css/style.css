@@ -1,9 +1,6 @@
-/* Syncostyle by Gearóid Moroney (Tetz) © 2006 */
-
-
 body {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 12px;
+	font-size: 12px;	
 	background-color: #3E3D47;
 	margin: 1em;
 }
@@ -188,7 +185,7 @@ a.read:hover {
 	padding-left: 5px;
 	margin-left: 0em;
 	margin-bottom: 0em;
-
+	
 }
 
 #all #right li {
@@ -197,7 +194,7 @@ a.read:hover {
 	margin-bottom: 0em;
 	margin-left: 0px;
 	margin-right: 0px;
-
+	
 }
 
 
