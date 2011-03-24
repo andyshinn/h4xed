@@ -1,80 +1,68 @@
 body {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
+	background-color: #3E3D47;
+	margin: 1em;
 }
+a {
+	color: #000;
+	text-decoration: none;
+}
+a:hover, #hlinks a:hover {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #F30;
+}
+#all {
+	width: 720px;
+	background-color: #FFF;
 
 #main {
 	min-width: 500px;
-	width: 60%;
 	float: left;
 }
 #head {
-	
-	/** background: #FFF url(../images/header-04-f.png) no-repeat left; **/
+	float: left;
+	background: #FFF url(../images/header-04-f.png) no-repeat left;
+	width: 100%;
+	height: 80px;
 	border-bottom: 1px solid #BEC0C9;
-    margin-top: 2em;
-	height: 5em;
 }
-
 #hlinks {
-	height: 5em;
-	vertical-align: bottom;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	margin-top: 50px;
+	width: 380px;
+	float: right;
+}
+#hlinks li {
+	display: inline;
 }
 #hlinks ul {
 	list-style-type: none;
 	white-space: nowrap;
 	display: inline;
-	margin-top: 3em;
-	margin-right: 0;
-	margin-bottom: 0;
-	margin-left: 0;
+	height: 10px;
+	margin: 0;
 }
-
-
-#hlinks li {
-	display: inline;
-	font-family: Verdana, Geneva, sans-serif;
-	font-size: 1.5em;
-	font-weight: bold;
-	vertical-align: bottom;
-}
-
 #hlinks a {
 	margin-left: 1em;
 	border: none;
-	vertical-align: bottom;
 }
-
-a {
-	color: #000;
-	text-decoration: none;
-}
-
-a:hover,#hlinks a:hover {
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-	border-bottom-color: #F30;
-}
-
-
-#news {
-	padding-bottom: 15px;
-	border-bottom: 1px solid #BEC0C9;
-}
-
 span.grn {
 	color: #090;
 }
-
 span.orange {
 	color: #ff3300;
 }
-
 /* Right - Boxes on the Right - Navigation etc. ----------------------------------------------- */
+
 h3 {
 	color: #373737;
 	font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
 	font-size: 20px;
+	text-align: right;
 	word-spacing: 0em;
 	margin-top: 5px;
 	margin-right: 5px;
@@ -82,7 +70,6 @@ h3 {
 	margin-left: 0px;
 	text-transform: lowercase;
 }
-
 h1 {
 	color: #373737;
 	font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
@@ -91,17 +78,7 @@ h1 {
 	text-transform: lowercase;
 }
 
-h2 {
-	font-family: Verdana, Geneva, sans-serif;
-	font-size: 16px;
-	margin-top: 10px;
-	margin-right: 0px;
-	margin-bottom: 5px;
-	margin-left: 0px;
-	color: #373737;
-}
-
-h3 {
+h2{
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: 12px;
 	margin-top: 10px;
@@ -143,17 +120,23 @@ h5 {
 }
 
 
+.rbox:hover {
+	background-color: #F7F7F7;
+}
 
-/* Main - Content Box ------------------------------------------------------------------------- */
 #playlist {
 	width: 100%;
 }
 
 #playlist th {
 	text-align: left;
-
 }
 
+#main {
+	float: left;
+	width: 100%;
+	margin-left: 3px;
+}
 #main p {
 	margin: 1em 2px;
 }
@@ -190,7 +173,17 @@ a.read:hover {
 #foot a {
 	color: #FFF;
 }
-
+#right .box {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	margin-bottom: 1em;
+}
+#right .adbox {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	margin-bottom: 1em;
+	text-align: right;
+}
 
 #all ul {
 	list-style-type: disc;
@@ -198,6 +191,7 @@ a.read:hover {
 	padding-left: 5px;
 	margin-left: 0em;
 	margin-bottom: 0em;
+
 }
 
 #all #right li {
@@ -206,6 +200,7 @@ a.read:hover {
 	margin-bottom: 0em;
 	margin-left: 0px;
 	margin-right: 0px;
+
 }
 
 .timestamp {

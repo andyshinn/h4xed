@@ -14,5 +14,9 @@
     <!-- Begin Shoutbox Messages -->
     <div id="messages"></div>
     <!-- End SHoutbox Messages -->
+	
 </form>
+
+<h3>Shout<span class="orange">Box</span>history</h3>
+<?php echo anchor('shoutbox2/history', 'Visit the complete shoutbox history'); ?>
 </div>

@@ -27,11 +27,14 @@
 
 <h3>Friends<span class="orange">Links</span></h3>
 <div class="box">
-		Music:
+
     <ul>
         <li><a target="_blank" href="http://leechmaster.com.ar">Leechmaster</a></li>
 		<li><a target="_blank" href="http://www.warpath-online.com/">Warpath</a></li>
 		<li><a target="_blank" href="http://www.myspace.com/labeledband">Labeled</a></li>
+<li><a target="_blank" href="http://melodicmetal.ru/">MelodicMetal.ru</a></li>
+<li><a target="_blank" href="http://www.myspace.com/nothingleftfortomorrow">Nothing Left For Tomorrow</a></li>
+<li><a target="_blank" href="http://www.myspace.com/oshiego">Oshiego</a></li>
 		
     </ul>
 </div>

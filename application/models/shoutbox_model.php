@@ -7,10 +7,11 @@ class Shoutbox_model extends Model
         parent::Model();
     }
     
-    function messages($limit = 10)
+    function messages($limit = 20)
     {
         $this->db->select('id, name, email, time, message');
-        $this->db->limit($limit);
+	if ($limit != 0) {
+        $this->db->limit($limit); }
         $this->db->order_by('date', 'desc');
         $this->db->from('shouts');
         
