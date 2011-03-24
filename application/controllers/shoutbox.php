@@ -19,6 +19,15 @@ class Shoutbox extends Controller
 		define('ONE_MONTH', ONE_WEEK * 4);
 		define('ONE_YEAR', ONE_MONTH * 12);
 	}
+
+    function contact() {
+
+		$shoutbox_messages = $this->shoutbox->messages(0);
+
+                $this->template->write_view('main', 'public/shoutbox_history');
+                $this->template->write_view('hlinks', $this->hlinks);
+                $this->template->render();
+    }
 	
 	function index()
 	{
