@@ -1,0 +1,20 @@
+<Asx Version = "3.0" > 
+<Title >H4XED Metal</Title>
+
+
+<Entry> 
+
+
+<Param Name = "MediaType" Value = "audio" />
+
+<Param Name = "SourceURL" Value = "http://sc-01.h4xed.us:7082/" />
+
+<Param Name = "Streams" Value = "audio" />
+
+<Param Name = "WM/Genre" Value = "Melodic Death Metal, Thrash Metal" />
+
+<Param Name = "WM/PromotionURL" Value = "http://radio.h4xed.us" />
+
+<Ref href = "http://sc-01.h4xed.us:7082/"/>
+</Entry>
+</Asx>

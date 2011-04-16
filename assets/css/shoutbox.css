@@ -1,0 +1,81 @@
+#onlinebox {
+	font-size: xx-small;
+}
+#onlinebox ul, #online li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	
+}
+
+#onlinebox li.me {
+	color: #339;
+}
+
+#shoutbox_notice {
+	font-size: small;
+	float: right;
+}
+
+#shouts {
+/*	margin-top: 40px;*/
+	min-width: 270px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: small;
+}
+#shoutbox #button {
+	float: right;
+}
+
+#shoutbox_form {
+	min-height: 100px;
+	margin-bottom: 1.5em;
+}
+
+#shoutbox_form #history {
+	float: left;
+	font-size: xx-small;
+}
+#shoutbox #fields textarea {
+	border: 1px solid #CCC;
+	width: 100%;
+/*	clear: right;*/
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: small;
+	padding: 2px;
+}
+
+#shoutbox #fields input {
+	border: 1px solid #CCC;
+	width: 120px;
+	clear: right;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: small;
+	padding: 2px;
+}
+
+#shouts dt {
+	font-weight: bold;
+	color: #8C2920;
+	padding-bottom: 5px;
+}
+
+#shouts dd {
+	margin-bottom: 10px;
+	padding-bottom: 0.5em;
+	margin-left: 0px;
+	padding-left: 10px;
+	border-bottom-width: 1px;
+	border-bottom-color: #CCC;
+	border-bottom-style: solid;
+}
+
+#shouts dd p {
+	margin-bottom: 0.5em;
+}
+
+#shouts abbr.timestamp {
+	font-weight: normal;
+	color: #000;
+	border: none;
+}

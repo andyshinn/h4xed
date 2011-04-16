@@ -1,0 +1,15 @@
+@CHARSET "ISO-8859-1";
+
+#basic-modal-content {display:none;}
+
+/* Overlay */
+#simplemodal-overlay {background-color:#000; cursor:wait;}
+
+/* Container */
+#simplemodal-container {height:360px; width:600px; background-color:#EEF0E4; border:thin dashed #BEC0C9; padding:12px;}
+#simplemodal-container .simplemodal-data {padding:8px;}
+/*#simplemodal-container a {color:#ddd;}*/
+#simplemodal-container a.modalCloseImg {text-decoration: none; background:url(/assets/images/icons/x.png) no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
+#simplemodal-container a.modalCloseImg:hover {border: none; text-decoration: none; background:url(/assets/images/icons/x.png) no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
+
+#simplemodal-container h3 {color:#84b8d9;}

@@ -1,0 +1,15 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/*
+|--------------------------------------------------------------------------
+| Development Site
+|--------------------------------------------------------------------------
+|
+| Setting this to true will display a small banner at the top of the
+| site explaining that this is not a production site
+|
+*/
+$config['development']	= TRUE;
+
+/* End of file streamsite.php */
+/* Location: ./application/config/streamsite.php */
