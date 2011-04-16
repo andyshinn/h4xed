@@ -1,8 +1,0 @@
-<ASX version = "3.0">
-<TITLE>H4XED Metal</TITLE>
-<MoreInfo href = "http://radio.h4xed.us" />
-<Entry>
-      <Ref href = "http://sc-01.h4xed.us:7080" />
-      <PARAM NAME="HTMLView" Value="http://radio.h4xed.us/radio/news"/>
-</Entry>
-</ASX>
