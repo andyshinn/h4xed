@@ -1,5 +1,5 @@
 <h3>Play<span class="orange">List</span></h3>
-<h2><div align="center">{letter_links}{link} {/letter_links}</div></h2>
+<h2>{letter_links}{link} {/letter_links}</h2>
 <div id="pagination">{page_links}</div>
 <table id="playlist">
 	<tr>
