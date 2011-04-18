@@ -1,5 +1,5 @@
 <h1>Artist<span class="orange">search</span></h1>
-<h2><div align="center">{letter_links}{link} {/letter_links}</div></h2>
+<h2>{letter_links}{link} {/letter_links}</h2>
 <div class="pagination">{page_links}</div>
 <table id="artist">
 	<tr align="left">
