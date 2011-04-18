@@ -90,19 +90,11 @@ class Playlist_model extends CI_Model
 
 	function artist($artist)
 	{
-
-		$search_array = $this->_term_array($artist);
-
 		$this->db->select('artist, count(DISTINCT title) as titlecount, count(DISTINCT album) as albumcount');
 		$this->db->from('songlist');
-
-		foreach ($search_array as $word)
-		{
-			$this->db->like('artist', $word);
-		}
-		$this->db->group_by( array ('artist'));
+		$this->db->like('artist', $artist);
+		$this->db->group_by(array('artist'));
 		$this->db->limit(1);
-
 		return $this->db->get();
 	}
 
@@ -118,37 +110,22 @@ class Playlist_model extends CI_Model
 
 	function albums($artist)
 	{
-		$search_array = $this->_term_array($artist);
-
 		$this->db->select('artist AS album_artist, album AS album_name, albumyear AS album_year, count(DISTINCT title) as album_titlecount, genre AS album_genre');
 		$this->db->from('songlist');
 
-		foreach ($search_array as $word)
-		{
-			$this->db->like('artist', $word);
-		}
+	    $this->db->like('artist', $artist);
 		$this->db->group_by( array ('artist', 'album'));
 		$this->db->order_by('albumyear', 'desc');
 
 		return $this->db->get();
 	}
 
-	function tracks($artist_safe = null, $album_safe = null)
+	function tracks($artist_name = null, $album_name = null)
 	{
-		if (isset($artist_safe) && isset($album_safe))
+		if (isset($artist_name) && isset($album_name))
 		{
-			$search_array_artist = $this->_term_array($artist_safe);
-			$search_array_album = $this->_term_array($album_safe);
-
-			foreach ($search_array_artist as $word)
-			{
-				$this->db->like('artist', $word);
-			}
-
-			foreach ($search_array_album as $word)
-			{
-				$this->db->like('album', $word);
-			}
+			$this->db->like('artist', $artist_name);
+			$this->db->like('album', $album_name);
 
 			$this->db->select('ID as song_id, artist AS track_artist, album AS album_name, albumyear AS track_year, title as track_title, genre AS track_genre, duration AS track_duration, trackno AS track_no');
 			$this->db->from('songlist');

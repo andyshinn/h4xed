@@ -163,27 +163,22 @@ class Playlist extends CI_Controller
 	function artists($letter = 'all', $limit_offset = 0)
 	{
 		$this->load->helper('inflector');
-		if ($letter == 'all')
-		{
-			$letter = null;
-		}
-		$artist_count_query = $this->playlist->artists($letter);
-		$artist_count = $artist_count_query->num_rows();
-		$artist_query = $this->playlist->artists($letter, $this->per_page, $limit_offset);
-		$artist = $artist_query->result_array();
+//		if ($letter == 'all')
+//		{
+//			$letter = null;
+//		}
+//		
+		$letter = ($letter == 'all') ? $letter = null : $letter = $letter;
+		
+		$artist_count = $this->playlist->artists($letter)->num_rows();
+		$artists = $this->playlist->artists($letter, $this->per_page, $limit_offset)->result_array();
+
 		$artist_url = array();
-		foreach($artist as $key => $value)
+		foreach($artists as $key => $artist)
 		{
-			$artist_name = array();
-			$artist_name = explode(' ', $value['artist']);
-			$artist_new_name = '';
-			foreach($artist_name as $artist_word)
-			{
-				$artist_new_name .= $artist_word . ' ';
-			}
-			$delimeter = '-';
-			$artist_url[$key] = array_merge($value, array('artist_url' => reduce_multiples(url_title(strtolower(trim($artist_new_name))))), (array) $delimeter);
+            $artist_url[$key] = array_merge($artist, array('artist_url' => rawurlencode($artist['artist'])));
 		}
+		
 		$config['base_url'] = site_url("playlist/artists/" . (isset($letter) ? $letter . "/" : 'all'));
 		$config['total_rows'] = $artist_count;
 		$config['per_page'] = $this->per_page;
@@ -203,25 +198,28 @@ class Playlist extends CI_Controller
 	{
 		if ($artist_safe)
 		{
+		    $artist_safe = rawurldecode($artist_safe);
+		    
 		    $this->template->add_css('assets/css/modal.css');
 		    $this->template->add_js('assets/js/jquery.simplemodal.1.4.1.min.js');
 		    $this->template->add_js('assets/js/request.js');
-			$artist_query = $this->playlist->artist($artist_safe);
-			$artist = $artist_query->row();
-			$albums_query = $this->playlist->albums($artist_safe);
-			$albums = $albums_query->result_array();
+			$artist = $this->playlist->artist($artist_safe)->row_array();
+
+			$albums = $this->playlist->albums($artist_safe)->result_array();
+
 			foreach($artist as $key => $value)
 			{
 				$this->view_data[$key] = $value;
 			}
+			
 			$albums_urls = $this->_build_array($albums);
 			$this->view_data['albums'] = $albums_urls;
-			$this->view_data['artist_url'] = $this->_safe_search($artist->artist);
+			$this->view_data['artist_url'] = rawurlencode($artist['artist']);
 			$this->template->parse_view('main', 'public/playlist/artist', $this->view_data);
 			$album_tracks = array();
 			foreach($albums_urls as $album)
 			{
-				$tracks_query = $this->playlist->tracks($this->_safe_search($album['album_artist']), $this->_safe_search($album['album_name']));
+				$tracks_query = $this->playlist->tracks($album['album_artist'], $album['album_name']);
 				$tracks = $tracks_query->result_array();
 				$tracks_time = array();
 				foreach($tracks as $track)
@@ -232,11 +230,9 @@ class Playlist extends CI_Controller
 					$tracks_time[]['track_time2'] = sprintf($this->time_format, $minutes, $secondsRemaining);
 				}
 				$tracks_new = $this->_my_array_merge($tracks, $tracks_time);
-				$this->template->parse_view('main', 'public/playlist/tracks', array('artist_name' => $artist->artist, 'tracks' => $tracks_new, 'album_name' => $album['album_name'], 'album_url' => $album['album_url']));
+				$this->template->parse_view('main', 'public/playlist/tracks', array('artist_name' => $artist['artist'], 'tracks' => $tracks_new, 'album_name' => $album['album_name'], 'album_url' => $album['album_url']));
 			}
-			//			print "<pre>";
-			//			print_r($albums_urls);
-			//			print "</pre>";
+
 			$this->template->write_view('head', 'include/head');
 			$this->template->render();
 		}
