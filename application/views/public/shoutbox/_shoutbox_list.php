@@ -9,7 +9,7 @@
     		<form action="shoutbox/post" style="display: none;">
 				<div id="fields">
             		<input id="name" name="name" type="text" value="<?=$name?>" maxlength="35" />
-            		<textarea id="message" name="message" cols="20" rows="3">Your message</textarea>
+            		<textarea id="message" name="message" cols="10" rows="3">Your message</textarea>
         		</div>
         		<div id="button">
             		<input name="post" type="submit" value="Post" />

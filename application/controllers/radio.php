@@ -28,7 +28,7 @@ class Radio extends CI_Controller
     function contact()
     {
         $this->template->write_view('main', 'public/contact');
-        $this->template->write_view('hlinks', $this->hlinks);
+        $this->template->write_view('head', 'include/head');
         $this->template->render();
     }
 
@@ -37,8 +37,8 @@ class Radio extends CI_Controller
         $this->template->add_css('assets/css/shoutbox.css');
         $this->template->add_js('assets/js/jquery.emoticon.js');
         $this->template->add_js('assets/js/emoticons.js');
-        $this->template->add_js('assets/js/jquery.timeago.js');
         $this->template->add_js('assets/js/shoutbox.js');
+        $this->template->add_js('assets/js/news.js');
         // Now playing song information
         $query_song_current = $this->playlist->current_song();
         $song_current = $query_song_current->row();

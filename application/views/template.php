@@ -8,17 +8,25 @@
 	</head>
 	<body>
 		<div id="container">
-			<div id="head">
-				<?= $head ?>
-			</div>
-			<div id="main">
-				<?php echo $main ?>
-			</div>
+
+			<div id="main_wrapper">
+    					<div id="head">
+    		        <?= $head ?>
+    			</div>
+    			<?php if (!empty($right)): ?>
+    			<div id="main" style="margin-right: 375px;">
+    			<?php else: ?>
+    			<div id="main">
+    			<?php endif; ?>
+	                <?php echo $main ?>
+    			</div>
+			
 			<?php if (!empty($right)): ?>
-				<div id="right">
+			<div id="right">
                 <?= $right ?>
-            </div>
+        	</div>
 			<?php endif; ?>
+			</div>
 		</div>
 
 <script type='text/javascript'>
