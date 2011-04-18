@@ -166,7 +166,7 @@ div.news_image {
 }
 
 #main {
-	float: left; 
+	float: left;
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-top: 10px;
@@ -235,6 +235,17 @@ div.news_item img { /*	border-color: #D2D4C9;*/
 	padding-bottom: 1em;
 	margin-bottom: 0.5em;
 	border-bottom: thin dashed #BEC0C9;
+}
+
+#now_playing {
+	overflow: hidden;
+}
+
+#song_info {
+	overflow: hidden;
+	position: relative;
+	left: 0;
+	bottom: 0;
 }
 
 span.grn {

@@ -41,7 +41,7 @@ class News_model extends CI_Model
             $this->db->where('id', $news_id);
         }
 
-        $this->db->select("id, title, body, poster, visible, timestamp, DATE_FORMAT(timestamp, '%b %D, %Y') AS date", false);
+        $this->db->select("id, title, body, poster, visible, timestamp, DATE_FORMAT(timestamp, '%M %D, %Y') AS date", false);
 		$this->db->order_by('id', 'DESC');
         $this->db->limit($news_limit);
 

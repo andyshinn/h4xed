@@ -6,7 +6,7 @@ var update_timeout = 10000;
 var ajax_add_url = '/shoutbox/ajax_add';
 var ajax_update_url = '/shoutbox/ajax_update';
 var ajax_online_url = '/shoutbox/ajax_online_users';
-var ajax_url_current_song = '/playlist/ajax_current_song';
+
 var imagePath = "/assets/images/emoticons/";
 var updating_shout = false;
 
@@ -28,7 +28,6 @@ $(function() {
     online_ul = $("ul#online;")
 
     initialLoad("Loading shouts... ");
-    updateCurrentSong();
     setTimeout('updateLoop()', update_timeout);
 
     $.ajaxSetup({
@@ -225,7 +224,7 @@ function updateOnlineUsers() {
             items.push(online_user.outerHtml());
         });
         
-        online_text = (json.count > 0) ? 'There are <strong>' + json.count + '</strong> users online inlcuding yourself:' : 'There are no users online at the moment.';
+        online_text = (json.count > 0) ? 'There are <strong>' + json.count + '</strong> users online.' : 'There are no users online at the moment.';
         online_container.html($('<p>').html(online_text));
         online_container.append($('<ul>').attr('id', 'online').html(items.join('')));
         
@@ -248,14 +247,6 @@ function updateLoop() {
         var shoutsTimer = setTimeout('updateLoop()', 2000);
     }
 
-}
-
-function updateCurrentSong() {
-    $("#song_history").html('Loading..');
-    $.get(ajax_url_current_song, function(json) {
-        // var currentSongTimer = setTimeout(updateCurrentSong,
-        // ((json.remaining_seconds+10)*1000));
-    }, 'json');
 }
 
 $.fn.fadeThenSlideToggle = function(speed, easing, callback) {

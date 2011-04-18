@@ -25,15 +25,16 @@ class Playlist extends CI_Controller
 		$this->artists();
 	}
 
-	function ajax_current_song()
+	function ajax_now_playing()
 	{
 		$remaining_seconds = 0;
 		$remaining_milliseconds = 0;
 		$duration_miliseconds = 0;
 		$current_song = $this->playlist->current_song()->row();
+		$artist_info = $this->playlist->artist($current_song->artist)->row();
 		$remaining_seconds = ((strtotime($current_song->date_played) + ceil(($current_song->duration / 1000))) - time());
 		$time_passed = ($remaining_seconds <= 0) ? true : false;
-        echo json_encode(array('song' => $current_song, 'remaining_seconds' => $remaining_seconds, 'time_passed' => $time_passed));
+        echo json_encode(array('song' => $current_song, 'artist_info' => $artist_info, 'remaining_seconds' => $remaining_seconds, 'time_passed' => $time_passed));
 //		pr($this->playlist->random_song()->row());
 	}
 

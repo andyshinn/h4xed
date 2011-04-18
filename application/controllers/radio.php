@@ -39,6 +39,7 @@ class Radio extends CI_Controller
         $this->template->add_js('assets/js/emoticons.js');
         $this->template->add_js('assets/js/shoutbox.js');
         $this->template->add_js('assets/js/news.js');
+        $this->template->add_js('assets/js/now_playing.js');
         // Now playing song information
         $query_song_current = $this->playlist->current_song();
         $song_current = $query_song_current->row();
