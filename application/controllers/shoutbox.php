@@ -48,7 +48,7 @@ class Shoutbox extends CI_Controller
 
     function history()
     {
-        //        $this->template->add_js('assets/js/jquery-1.5.1.min.js');
+        //        $this->template->add_js('assets/js/jquery-1.6.min.js');
         $this->template->add_css('assets/css/style.css');
         $this->template->add_css('assets/css/shoutbox.css');
         $shoutbox = $this->shoutbox->messages(NULL, NULL);
