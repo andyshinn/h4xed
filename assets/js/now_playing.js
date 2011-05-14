@@ -1,7 +1,6 @@
 var ajax_url_now_playing = baseUrl + 'playlist/ajax_now_playing';
 var first_load = true;
 var remaining_seconds = 0;
-var history_selector = $("ul#history");
 var lastSong;
 
 $(document).ready(function () {
@@ -49,13 +48,13 @@ function updateNowPlaying() {
 }
 
 function updateSongHistory(data) {
-
+    console.log(data);
     song_item = $("<li>").text(data.song.artist + " - " + data.song.title);
-    song_item.hide().css("opacity", 0).prependTo(history).textOverflow().slideDown(
+    song_item.hide().css("opacity", 0).prependTo("ul.history").slideDown(
             'slow', 'swing').animate({
             opacity : 1
         });
-    history_selector.children("li").filter(":gt(4)").fadeThenSlideToggle(null, null, function() {
+        $("ul.history").children("li").filter(":gt(4)").fadeThenSlideToggle(null, null, function() {
         $(this).remove();
     });
 }

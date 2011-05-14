@@ -17,7 +17,7 @@ echo anchor('radio/tunein/7082/asx', 'ASX')?>
 </div>
 <h3>Song<span class="orange">History</span></h3>
 <div class="box">
-<ul id="history">
+<ul class="history">
 	{song_history}
 	<li>{song}</li>
 	{/song_history}
