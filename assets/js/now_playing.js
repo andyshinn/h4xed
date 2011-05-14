@@ -48,15 +48,14 @@ function updateNowPlaying() {
 }
 
 function updateSongHistory(data) {
-    console.log(data);
     song_item = $("<li>").text(data.song.artist + " - " + data.song.title);
     song_item.hide().css("opacity", 0).prependTo("ul.history").slideDown(
             'slow', 'swing').animate({
             opacity : 1
         });
-        $("ul.history").children("li").filter(":gt(4)").fadeThenSlideToggle(null, null, function() {
-        $(this).remove();
-    });
+        $("ul.history").children("li").filter(":gt(4)").slideUp('slow', 'swing', function() {
+            $(this).remove();
+        });
 }
 
 $.fn.fadeThenSlideToggle = function(speed, easing, callback) {

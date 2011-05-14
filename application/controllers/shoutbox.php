@@ -9,7 +9,7 @@ class Shoutbox extends CI_Controller
         $this->load->library(array('template', 'parser', 'form_validation'));
         $this->load->helper(array('url', 'date', 'text', 'cookie', 'when', 'form'));
     }
-    
+
     public function get_settings()
     {
         $base = parse_url(site_url());
@@ -21,27 +21,31 @@ class Shoutbox extends CI_Controller
         if ($this->input->is_ajax_request())
         {
             $my_name = $this->session->userdata('name');
-            $timeout_idle = 30;
-            $timeout_gone = 60;
+            $timeout_idle = 15;
+            $timeout_gone = 70;
             $online_users = array();
             $checked_users = array();
             $sessions = $this->shoutbox->online_users();
-            foreach($sessions->result() as $session)
+
+            foreach($sessions->result_array() as $session)
             {
                 $user_data = array();
-                $session_user_data = unserialize($session->user_data);
-                if (((time() - $session_user_data['last_activity_shoutbox']) < $timeout_gone) & (! empty($session_user_data['name'])) & (! in_array($session_user_data['name'], $checked_users)))
+                $session_user_data = unserialize($session['user_data']);
+                if ((array_key_exists('user_data', $session) && (!empty($session['user_data']))) && (! empty($session_user_data['name'])) && (! in_array($session_user_data['name'], $checked_users)))
                 {
-                    foreach(unserialize($session->user_data) as $user_data_key => $user_data_value)
+                    if ((time() - $session_user_data['last_activity_shoutbox']) < $timeout_gone)
                     {
-                        $user_data[$user_data_key] = ($user_data_key == 'last_activity_shoutbox') ? when($user_data_value) : $user_data_value;
+                        foreach($session_user_data as $user_data_key => $user_data_value)
+                        {
+                            $user_data[$user_data_key] = ($user_data_key == 'last_activity_shoutbox') ? when($user_data_value) : $user_data_value;
+                        }
+                        $time_passed = time() - $session_user_data['last_activity_shoutbox'];
+                        $user_data['status'] = ($time_passed >= $timeout_idle) ? "idle" : "active";
+                        $user_data['is_me'] = ($user_data['name'] == $my_name) ? true : false;
+                        $user_data['seconds_passed'] = $time_passed;
+                        $online_users[] = $user_data;
+                        $checked_users[] = $user_data['name'];
                     }
-                    $time_passed = time() - $session_user_data['last_activity_shoutbox'];
-                    $user_data['status'] = ($time_passed >= $timeout_idle) ? "idle" : "active";
-                    $user_data['is_me'] = ($user_data['name'] == $my_name) ? true : false;
-                    $user_data['seconds_passed'] = $time_passed;
-                    $online_users[] = $user_data;
-                    $checked_users[] = $user_data['name'];
                 }
             }
             echo json_encode(array('users' => $online_users, 'count' => count($online_users)));
@@ -77,8 +81,8 @@ class Shoutbox extends CI_Controller
         {
             $shouts_new = array();
             $last_id_new = $this->shoutbox->last_id();
-
-//            $update = ($this->input->post('initial')) ? FALSE : TRUE;
+            
+            //            $update = ($this->input->post('initial')) ? FALSE : TRUE;
             $shouts_query = $this->shoutbox->messages(null, 20);
             $shouts = $shouts_query->result_array();
             
@@ -91,17 +95,18 @@ class Shoutbox extends CI_Controller
             $config = array(array('field' => 'id', 'label' => 'ID', 'rules' => 'trim|xss_clean|htmlspecialchars|integer'));
             $this->form_validation->set_rules($config);
             $this->form_validation->set_error_delimiters('', ':');
-//            if ($this->form_validation->run() == FALSE)
-//            {
-//                echo json_encode(array('row_count' => $row_count, 'post_data' => $this->input->post(), 'errors' => explode(':', trim(rtrim(str_replace(array("\r\n", "\r", "\n"), '', validation_errors()), ':')))));
-//            }
-//            else
-//            {
-                $name = $this->input->cookie('h4xed_shoutname');
-                $this->session->set_userdata('name', $name);
-                $this->session->set_userdata('last_activity_shoutbox', time());
-                echo json_encode(array('row_count' => $row_count, 'post_data' => $this->input->post(), 'lastid' => $last_id_new, 'shouts' => $shouts_new));
-//            }
+            //            if ($this->form_validation->run() == FALSE)
+            //            {
+            //                echo json_encode(array('row_count' => $row_count, 'post_data' => $this->input->post(), 'errors' => explode(':', trim(rtrim(str_replace(array("\r\n", "\r", "\n"), '', validation_errors()), ':')))));
+            //            }
+            //            else
+            //            {
+            $name = $this->input->cookie('h4xed_shoutname');
+            $this->session->set_userdata('name', $name);
+            $this->session->set_userdata('last_activity_shoutbox', time());
+            echo json_encode(array('row_count' => $row_count, 'post_data' => $this->input->post(), 'lastid' => $last_id_new, 'shouts' => $shouts_new));
+        
+     //            }
         }
         else
         {
