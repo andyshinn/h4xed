@@ -1,6 +1,8 @@
-var ajax_url_now_playing = '/playlist/ajax_now_playing';
+var ajax_url_now_playing = baseUrl + 'playlist/ajax_now_playing';
 var first_load = true;
 var remaining_seconds = 0;
+var history_selector = $("ul#history");
+var lastSong;
 
 $(document).ready(function () {
     updateNowPlaying();
@@ -14,9 +16,10 @@ function updateNowPlaying() {
         var currentSongTimer = (data.remaining_seconds > 0) ? setTimeout(updateNowPlaying, ((data.remaining_seconds + 5) * 1000)) : setTimeout(updateNowPlaying, 10000);
 
         if (first_load) {
+            lastSong = data;
             first_load = false;
         } else if (data.remaining_seconds > remaining_seconds) {
-            updateSongHistory(data);
+            updateSongHistory(lastSong);
             song_info_div.animate({
                 left: parseInt(song_info_div.css('left'), 10) == 0 ? -song_info_div.outerWidth() : 0
             }, 1000, 'swing', function () {
@@ -39,6 +42,7 @@ function updateNowPlaying() {
                 });
 
             });
+            lastSong = data;
         }
         remaining_seconds = data.remaining_seconds;
     }, 'json');
@@ -46,4 +50,20 @@ function updateNowPlaying() {
 
 function updateSongHistory(data) {
 
+    song_item = $("<li>").text(data.song.artist + " - " + data.song.title);
+    song_item.hide().css("opacity", 0).prependTo(history).textOverflow().slideDown(
+            'slow', 'swing').animate({
+            opacity : 1
+        });
+    history_selector.children("li").filter(":gt(4)").fadeThenSlideToggle(null, null, function() {
+        $(this).remove();
+    });
 }
+
+$.fn.fadeThenSlideToggle = function(speed, easing, callback) {
+    if (this.is(":hidden")) {
+        return this.slideDown(speed, easing).fadeTo(speed, 1, easing, callback);
+    } else {
+        return this.fadeTo(speed, 0, easing).slideUp(speed, easing, callback);
+    }
+};

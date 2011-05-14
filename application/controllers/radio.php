@@ -36,6 +36,8 @@ class Radio extends CI_Controller
     {
         $this->template->add_css('assets/css/shoutbox.css');
         $this->template->add_js('assets/js/jquery.emoticon.js');
+        $this->template->add_js('assets/js/jquery.text-overflow.min.js');
+        $this->template->add_js('assets/js/jquery.cookie.js');
         $this->template->add_js('assets/js/emoticons.js');
         $this->template->add_js('assets/js/shoutbox.js');
         $this->template->add_js('assets/js/news.js');

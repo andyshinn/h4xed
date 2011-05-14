@@ -9,6 +9,12 @@ class Shoutbox extends CI_Controller
         $this->load->library(array('template', 'parser', 'form_validation'));
         $this->load->helper(array('url', 'date', 'text', 'cookie', 'when', 'form'));
     }
+    
+    public function get_settings()
+    {
+        $base = parse_url(site_url());
+        echo json_encode(array('base' => $base['path']));
+    }
 
     function ajax_online_users()
     {
@@ -24,13 +30,13 @@ class Shoutbox extends CI_Controller
             {
                 $user_data = array();
                 $session_user_data = unserialize($session->user_data);
-                if (((time() - $session_user_data['last_activity_shoutbox']) < $timeout_gone) & (! empty($session_user_data['name'])) & (! in_array($session_user_data['name'], $checked_users)))
+                if (((time() - $session_user_data['last']) < $timeout_gone) & (! empty($session_user_data['name'])) & (! in_array($session_user_data['name'], $checked_users)))
                 {
                     foreach(unserialize($session->user_data) as $user_data_key => $user_data_value)
                     {
-                        $user_data[$user_data_key] = ($user_data_key == 'last_activity_shoutbox') ? when($user_data_value) : $user_data_value;
+                        $user_data[$user_data_key] = ($user_data_key == 'last') ? when($user_data_value) : $user_data_value;
                     }
-                    $time_passed = time() - $session_user_data['last_activity_shoutbox'];
+                    $time_passed = time() - $session_user_data['last'];
                     $user_data['status'] = ($time_passed >= $timeout_idle) ? "idle" : "active";
                     $user_data['is_me'] = ($user_data['name'] == $my_name) ? true : false;
                     $user_data['seconds_passed'] = $time_passed;
@@ -93,7 +99,7 @@ class Shoutbox extends CI_Controller
 //            {
                 $name = $this->input->cookie('h4xed_shoutname');
                 $this->session->set_userdata('name', $name);
-                $this->session->set_userdata('last_activity_shoutbox', time());
+                $this->session->set_userdata('last', time());
                 echo json_encode(array('row_count' => $row_count, 'post_data' => $this->input->post(), 'lastid' => $last_id_new, 'shouts' => $shouts_new));
 //            }
         }
@@ -126,7 +132,7 @@ class Shoutbox extends CI_Controller
                     $shouts_new = array();
                     $this->input->set_cookie("h4xed_shoutname", $name, "2678400");
                     $this->session->set_userdata('name', $name);
-                    $this->session->set_userdata('last_activity_shoutbox', time());
+                    $this->session->set_userdata('last', time());
                     $lastid = $this->input->post('lastid');
                     $id = $this->db->insert_id();
                     $shouts_query = $this->shoutbox->messages($lastid, 20, TRUE);

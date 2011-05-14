@@ -3,8 +3,12 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 		<title><?= $title ?></title>
+    <script type="text/javascript">
+        var baseUrl = "<?php echo site_url()?>";
+    </script>
 		<?= $_scripts ?>
 		<?= $_styles ?>
+    
 	</head>
 	<body>
 		<div id="container">

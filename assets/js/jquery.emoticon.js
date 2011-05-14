@@ -35,10 +35,10 @@ RegExp.escape = function(text) {
     );
   }
   return text.replace(arguments.callee.sRE, '\\$1');
-}
+};
 
 $.fn.emoticon = function(theText) {
-	var imagePath = "/assets/images/emoticons/"; 
+	var imagePath = baseUrl + "assets/images/emoticons/"; 
 	var newText = theText;
 	for( var a in emoticons.emoticon ) {
 		emoticon = emoticons.emoticon[a];

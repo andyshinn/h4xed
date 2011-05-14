@@ -1,13 +1,21 @@
+$.ajax({
+    url: '../shoutbox/get_settings',
+    async: false,
+    success: function(data) {
+       settings = data;
+    },
+    dataType: "json"
+});
+
 var notice_message = 'Shoutbox loading... ';
 var last_id = 0;
 var yourname = 'Your name';
 var yourmessage = 'Your message';
 var update_timeout = 10000;
-var ajax_add_url = '/shoutbox/ajax_add';
-var ajax_update_url = '/shoutbox/ajax_update';
-var ajax_online_url = '/shoutbox/ajax_online_users';
-
-var imagePath = "/assets/images/emoticons/";
+var ajax_add_url = baseUrl + 'shoutbox/ajax_add';
+var ajax_update_url = baseUrl + 'shoutbox/ajax_update';
+var ajax_online_url = baseUrl + 'shoutbox/ajax_online_users';
+var imagePath = baseUrl + "assets/images/emoticons/";
 var updating_shout = false;
 
 $(function() {
@@ -25,14 +33,14 @@ $(function() {
     input_message = $("#shoutbox_form #message");
     button_selector = $("#shoutbox_form #button");
     online_container = $('#onlinebox');
-    online_ul = $("ul#online;")
+    online_ul = $("ul#online;");
 
     initialLoad("Loading shouts... ");
     setTimeout('updateLoop()', update_timeout);
 
     $.ajaxSetup({
         cache : false
-    })
+    });
     
 
         input_message.keypress(function (e) {
@@ -51,7 +59,8 @@ $(function() {
         showLoading("Posting shout... ");
         $.post(ajax_add_url, {
             message : input_message.val(), name : input_name.val(),
-            lastid : last_id
+            lastid : last_id,
+            h4xed_csrf_token: $.cookie("h4xed_csrf")
         }, function(json) {
             validatePost(json);
         }, "json");
@@ -125,7 +134,8 @@ function hideLoading() {
 function populateMessages() {
     $.post(ajax_update_url, {
         lastid : last_id,
-        initial : false
+        initial : false,
+        h4xed_csrf_token: $.cookie("h4xed_csrf")
     }, function(json) {
 
         shouts_list_created = $('<dl>').attr('id', 'shouts_list');
@@ -139,7 +149,7 @@ function populateMessages() {
             
             shout_dt.appendTo(shouts_list_created);
             shout_dd.appendTo(shouts_list_created);
-        })
+        });
         shouts_selector.append(shouts_list_created);
         getLastId();
         hideLoading();
@@ -246,7 +256,6 @@ function updateLoop() {
     } else {
         var shoutsTimer = setTimeout('updateLoop()', 2000);
     }
-
 }
 
 $.fn.fadeThenSlideToggle = function(speed, easing, callback) {
@@ -255,7 +264,7 @@ $.fn.fadeThenSlideToggle = function(speed, easing, callback) {
     } else {
         return this.fadeTo(speed, 0, easing).slideUp(speed, easing, callback);
     }
-}
+};
 
 $.fn.outerHtml = function(include_scripts) {
     if(include_scripts === undefined){ include_scripts = false; }
@@ -278,4 +287,4 @@ $.fn.outerHtml = function(include_scripts) {
         }
     });
     return items.join('');
-}
+};

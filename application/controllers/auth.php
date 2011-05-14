@@ -10,9 +10,7 @@ class Auth extends Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->library('ion_auth');
-		$this->load->library('session');
-		$this->load->library('form_validation');
+		$this->load->library('ion_auth', 'session', 'form_validation', 'encrypt');
 		$this->load->database();
 		$this->load->helper('url');
 	}
@@ -42,7 +40,7 @@ class Auth extends Controller {
 	}
 
 	//log the user in
-	function login()
+	function login($redirect_controller = FALSE)
 	{
 		$this->data['title'] = "Login";
 
@@ -59,7 +57,14 @@ class Auth extends Controller {
 			{ //if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect($this->config->item('base_url'), 'refresh');
+				if (isset($redirect_controller))
+				{
+				    redirect(urldecode($redirect_controller), 'refresh');
+				}
+				else
+				{
+				    redirect($this->config->item('base_url'), 'refresh');
+				}
 			}
 			else
 			{ //if the login was un-successful
