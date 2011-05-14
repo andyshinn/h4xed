@@ -230,7 +230,7 @@ function updateOnlineUsers() {
         var items = [];
         $.each(json.users, function(id, online) {
             cssclass = (online.is_me) ? 'me' : '';
-            online_user = $("<li></li>").addClass(cssclass).text(online.name);
+            online_user = $("<li>").addClass(cssclass).text(online.name);
             items.push(online_user.outerHtml());
         });
         
