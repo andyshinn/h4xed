@@ -9,7 +9,7 @@
 	</tr>
 	{artist}
 	<tr>
-		<td><a href="/playlist/artist/{artist_url}">{artist}</a></td>
+		<td><?php echo anchor("/playlist/artist/{artist_url}", "{artist}")?></td>
 		<td>{titlecount}</td>
 		<td>{albumcount}</td>	
 	</tr>

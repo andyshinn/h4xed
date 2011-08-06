@@ -41,7 +41,7 @@ function updateNowPlaying() {
                 });
 
             });
-            lastSong = data;
+            var lastSong = data;
         }
         remaining_seconds = data.remaining_seconds;
     }, 'json');
