@@ -174,9 +174,7 @@ class Playlist extends CI_Controller
                 $remaining_seconds = 0;
                 $current_song = $this->playlist->current_song()->row();
                 $remaining_seconds = ((strtotime($current_song->date_played) + ceil(($current_song->duration / 1000))) - time());
-                echo $current_song->artist . "\n";
-                echo $current_song->title . "\n";
-                echo $remaining_seconds;
+                echo $current_song->artist . PHP_EOL . $current_song->title . PHP_EOL . $remaining_seconds;
             break;
             
             default :
