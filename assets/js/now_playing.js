@@ -11,7 +11,6 @@ h4xed.now_playing = {
 };
 
 function updateCurrentTimer(remaining) {
-	console.log("Updating timer with: " + remaining);
 	var currentSongTimer = (remaining > 0) ? setTimeout(mainLoop, ((remaining + 5) * 1000)) : setTimeout(mainLoop, 10000);
 }
 
@@ -56,19 +55,12 @@ function mainLoop() {
 		if(h4xed.now_playing.first_load) {
 			h4xed.now_playing.first_load = false;
 			updateCurrentTimer(data.remaining_seconds);
-			console.log("data: ");
-			console.log(data);
 			h4xed.now_playing.last_song = data;
 		} else if(data.song.ID > h4xed.now_playing.last_song.song.ID) {
-			console.log("Else If");
 			updateCurrentTimer(data.remaining_seconds);
 			updateNowPlaying(data, h4xed.now_playing.last_song);
-			// updateSongHistory(data);
-			console.log("last_song: ");
-			console.log(h4xed.now_playing.last_song);
 			h4xed.now_playing.last_song = data;
 		} else {
-			console.log("Else");
 			updateCurrentTimer(data.remaining_seconds);
 		}
 		h4xed.now_playing.remaining_seconds = data.remaining_seconds;

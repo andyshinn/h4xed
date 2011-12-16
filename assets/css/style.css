@@ -45,7 +45,7 @@ div.news_image h2 {
 	color: #eeeeee;
 	letter-spacing: -1px;
 	background: rgb(0, 0, 0);
-	background: rgba(0, 0, 0, 0.7);
+	background: rgba(0, 0, 0, 0.5);
 }
 
 div.news_image h6 {
@@ -56,7 +56,7 @@ div.news_image h6 {
 	font-size: small;
 	color: #cccccc;
 	background: rgb(0, 0, 0);
-	background: rgba(0, 0, 0, 0.7);
+	background: rgba(0, 0, 0, 0.5);
 	font-variant: small-caps;
 	padding-bottom: 5px;
 }
