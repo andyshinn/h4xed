@@ -2,7 +2,7 @@ $.ajax({
     url: '../shoutbox/get_settings',
     async: false,
     success: function(data) {
-       settings = data;
+       h4xed.settings = data;
     },
     dataType: "json"
 });
@@ -12,10 +12,10 @@ var last_id = 0;
 var yourname = 'Your name';
 var yourmessage = 'Your message';
 var update_timeout = 10000;
-var ajax_add_url = baseUrl + 'shoutbox/ajax_add';
-var ajax_update_url = baseUrl + 'shoutbox/ajax_update';
-var ajax_online_url = baseUrl + 'shoutbox/ajax_online_users';
-var imagePath = baseUrl + "assets/images/emoticons/";
+var ajax_add_url = h4xed.baseUrl + 'shoutbox/ajax_add';
+var ajax_update_url = h4xed.baseUrl + 'shoutbox/ajax_update';
+var ajax_online_url = h4xed.baseUrl + 'shoutbox/ajax_online_users';
+var imagePath = h4xed.baseUrl + "assets/images/emoticons/";
 var updating_shout = false;
 
 $(function() {

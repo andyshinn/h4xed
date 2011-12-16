@@ -2,7 +2,7 @@ $.ajax({
     url: '../shoutbox/get_settings',
     async: false,
     success: function(data) {
-       settings = data;
+       h4xed.settings = data;
     },
     dataType: "json"
 });

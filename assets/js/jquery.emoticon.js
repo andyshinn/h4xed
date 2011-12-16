@@ -38,7 +38,7 @@ RegExp.escape = function(text) {
 };
 
 $.fn.emoticon = function(theText) {
-	var imagePath = baseUrl + "assets/images/emoticons/"; 
+	var imagePath = h4xed.baseUrl + "assets/images/emoticons/"; 
 	var newText = theText;
 	for( var a in emoticons.emoticon ) {
 		emoticon = emoticons.emoticon[a];

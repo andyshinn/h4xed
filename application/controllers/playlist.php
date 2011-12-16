@@ -15,7 +15,7 @@ class Playlist extends CI_Controller
         $this->load->model('playlist_model', 'playlist');
         $this->load->model('stream_model', 'stream');
         $this->load->helper(array('url', 'form', 'string', 'date'));
-        $this->template->add_js('assets/js/jquery-1.6.min.js');
+        $this->template->add_js('assets/js/jquery-1.7.1.min.js');
         $this->template->add_css('assets/css/style.css');
         $this->template->add_js('assets/js/general.js');
     }

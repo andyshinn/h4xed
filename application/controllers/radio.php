@@ -16,7 +16,7 @@ class Radio extends CI_Controller
         $this->load->model('shoutbox_model', 'shoutbox');
         $this->load->helper(array('url', 'date', 'text', 'cookie', 'when'));
         $this->load->library('parser');
-        $this->template->add_js('assets/js/jquery-1.6.min.js');
+        $this->template->add_js('assets/js/jquery-1.7.1.min.js');
         $this->template->add_css('assets/css/style.css');
     }
 
