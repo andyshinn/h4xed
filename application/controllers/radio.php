@@ -145,10 +145,18 @@ class Radio extends CI_Controller {
 				case 'm3u' :
 					$file_name = $stream_id . '.' . $list_type;
 					$mime_type = 'audio/x-mpegurl';
+					$file_data = "#EXTM3U
+#EXTINF:-1,H4XED Metal - The newest Melodic, Death, and Thrash Metal!
+http://sc-01.h4xed.us:$stream_id/
+					";
 					break;
 				case 'pls' :
 					$file_name = $stream_id . '.' . $list_type;
 					$mime_type = 'audio/x-scpls';
+					$file_data = "[playlist]
+NumberOfEntries=1
+File1=http://sc-01.h4xed.us:$stream_id/
+					";
 				default :
 					$file_name = $stream_id . '.' . $list_type;
 					$mime_type = 'video/x-ms-asf';
