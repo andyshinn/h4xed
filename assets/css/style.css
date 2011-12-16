@@ -36,30 +36,7 @@ h2 {
 	color: #373737;
 }
 
-div.news_image h2 {
-	position: absolute;
-	top: 0em;
-	width: 100%;
-	font-family: "Helvetica", sans-serif;
-	font-size: x-large;
-	color: #eeeeee;
-	letter-spacing: -1px;
-	background: rgb(0, 0, 0);
-	background: rgba(0, 0, 0, 0.5);
-}
 
-div.news_image h6 {
-	position: absolute;
-	top: 30px;
-	width: 100%;
-	font-family: "Helvetica", sans-serif;
-	font-size: small;
-	color: #cccccc;
-	background: rgb(0, 0, 0);
-	background: rgba(0, 0, 0, 0.5);
-	font-variant: small-caps;
-	padding-bottom: 5px;
-}
 
 h3 {
 	color: #373737;
