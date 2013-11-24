@@ -1,3 +1,11 @@
+<h3>Android<span class="orange">Application</span></h3>
+<div style="text-align: center; margin-top: 10px" class="box">
+<a href="http://play.google.com/store/apps/details?id=org.nesociety.H4XEDRADIO">
+  <img alt="Android app on Google Play"
+       src="http://www.android.com/images/brand/android_app_on_play_logo_large.png" />
+</a>
+</div>
+
 <h3>Tune<span class="orange">In</span></h3>
 <div class="box">
 <ul>
@@ -31,7 +39,9 @@ echo anchor('radio/tunein/7082/asx', 'ASX')?>
 <div id="about">
 <p>H4XED Metal is a H4XED Radio streaming internet radio station
 dedicated to bringing you new, lesser played melodic death, technical
-death, thrash, doom, and other metal!</p>
+death, thrash, doom, and other metal!</p><br />
+<p>Check out H4XED Radio on <a href="https://plus.google.com/101683508050392194947" rel="publisher">Google+</a>
+</p>
 </div>
 
 <h3>Friends<span class="orange">Links</span></h3>

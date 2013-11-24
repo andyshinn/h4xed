@@ -28,6 +28,27 @@ class Radio extends CI_Controller {
 		$this -> template -> render();
 	}
 
+	function windows_media_player() {
+		$view_data = array();
+		$this -> template -> add_css('assets/css/shoutbox.css');
+                $this -> template -> add_js('assets/js/jquery.emoticon.js');
+                $this -> template -> add_js('assets/js/jquery.text-overflow.min.js');
+                $this -> template -> add_js('assets/js/jquery.cookie.js');
+                $this -> template -> add_js('assets/js/emoticons.js');
+                $this -> template -> add_js('assets/js/shoutbox.js');
+                $this -> template -> add_js('assets/js/now_playing.js');
+		$query_song_current = $this -> playlist -> current_song();
+                $song = $query_song_current -> row();
+                $artist_query = $this -> playlist -> artist($song -> artist);
+                $band = $artist_query -> row();
+
+		$view_data['band'] = $band->artist;
+		$view_data['song'] = $song->title;
+		$view_data['release'] = $song->album;
+
+		$this->load->view('public/windows_media_player', $view_data);
+	}
+
 	function news() {
 		$this -> template -> add_css('assets/css/shoutbox.css');
 		$this -> template -> add_js('assets/js/jquery.emoticon.js');
@@ -145,18 +166,10 @@ class Radio extends CI_Controller {
 				case 'm3u' :
 					$file_name = $stream_id . '.' . $list_type;
 					$mime_type = 'audio/x-mpegurl';
-					$file_data = "#EXTM3U
-#EXTINF:-1,H4XED Metal - The newest Melodic, Death, and Thrash Metal!
-http://sc-01.h4xed.us:$stream_id/
-					";
 					break;
 				case 'pls' :
 					$file_name = $stream_id . '.' . $list_type;
 					$mime_type = 'audio/x-scpls';
-					$file_data = "[playlist]
-NumberOfEntries=1
-File1=http://sc-01.h4xed.us:$stream_id/
-					";
 				default :
 					$file_name = $stream_id . '.' . $list_type;
 					$mime_type = 'video/x-ms-asf';

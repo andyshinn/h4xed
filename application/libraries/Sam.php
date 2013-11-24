@@ -3,7 +3,7 @@ if (!defined('BASEPATH')) exit ('No direct script access allowed');
 
 class Sam
 {
-    var $sam_host = 'fizone.com';
+    var $sam_host = 'egerserv.fihn.net';
     var $sam_port = 1221;
 
     function Sam()
